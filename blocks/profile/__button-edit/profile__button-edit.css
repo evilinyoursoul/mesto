@@ -1,0 +1,9 @@
+.profile__button-edit {
+  grid-area: edit;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: no-repeat;
+  background-image: url(/images/edit.svg);
+}

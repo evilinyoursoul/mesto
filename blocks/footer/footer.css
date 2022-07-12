@@ -1,6 +1,6 @@
 .footer {
   display: flex;
 
-  margin: 66px auto 0;
+  margin: 66px auto 60px;
   width: calc(100% - 2 * 200px);
 }
