@@ -1,14 +1,14 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 41px;
+  gap: 36px;
   margin: 45px auto 0;
   width: calc(100% - 2 * 200px);
 }
 
 .header::after {
   /* width: 1158px; */
-  height: 2px;
+  height: 1px;
   content: "";
   background-image: url("/images/line.svg");
   background-repeat: no-repeat;
