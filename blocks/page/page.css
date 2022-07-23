@@ -5,9 +5,9 @@
   color: var(--basic-white);
   background-color: var(--basic-black);
 
-  min-height: 100%;
+  /* min-height: 100%;
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content 1fr min-content; */
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

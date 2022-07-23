@@ -1,6 +1,14 @@
 .article-grid {
   display: flex;
+  justify-content: center;
 
   margin: 51px auto 0;
   width: calc(100% - 2 * 200px);
+}
+
+@media screen and (max-width: 1279px) {
+  .article-grid {
+    margin: 36px auto 0;
+    width: calc(100% - 2 * 19px);
+  }
 }
