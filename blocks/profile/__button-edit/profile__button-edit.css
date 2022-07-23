@@ -7,6 +7,14 @@
   background: no-repeat;
   background-image: url(/images/edit.svg);
 
-  margin-top: 38px;
+  /* margin-top: 38px; */
 
+}
+
+@media screen and (max-width: 768px) {
+  .profile__button-edit {
+    width: 18px;
+    height: 18px;
+    background-size: 18px;
+  }
 }
