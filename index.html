@@ -74,5 +74,17 @@
         &copy; 2020 Mesto Russia
       </p>
     </footer>
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <form class="popup__form popup__form-profile" name="user" novalidate="">
+          <input type="text" id="name-input" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required="" name="profileName">
+          <input type="text" id="occupation-input" class="popup__input popup__input_type_occupation" minlength="2" maxlength="200" required="" name="occupationName">
+          <button type="submit" class="popup__submit" value="Сохранить" disabled="">Сохранить</button>
+      </form>
+      </div>
+    </section>
+
 </body>
 </html>
