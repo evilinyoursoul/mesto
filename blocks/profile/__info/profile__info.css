@@ -1,7 +1,7 @@
 .profile__info {
   display: grid;
   align-self: center;
-  grid-template-columns: 150px 312px 24px;
+  grid-template-columns: 150px 330px 24px;
   grid-template-areas:
     "avatar name edit"
     "avatar occupation occupation";
