@@ -4,7 +4,7 @@
   height: 50px;
   border: none;
   background: no-repeat;
-  background-image: url(/images/add.svg);
+  background-image: url(../../../images/add.svg);
   background-position: center;
   border: 2px solid var(--basic-white);
   border-radius: 2px;

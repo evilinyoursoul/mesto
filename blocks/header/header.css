@@ -10,7 +10,7 @@
   /* width: 1158px; */
   height: 1px;
   content: "";
-  background-image: url("/images/line.svg");
+  background-image: url("../../../images/line.svg");
   background-repeat: no-repeat;
   background-position: 0 0;
 }
