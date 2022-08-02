@@ -1,17 +1,12 @@
-# Проект: Место
+# [Учебный проект: Место](https://evilinyoursoul.github.io/mesto/)
 
-### Обзор
-
-* Figma
-* Картинки
+![](https://shields.io/badge/-HTML-orange)
+![](https://shields.io/badge/-CSS-blue)
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4)
 
-**Картинки**
+Использованы HTML, CSS, Nested BEM.
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+Проект выполнен в рамках обучения на [курсе "Веб-разработчик" Яндекс.Практикума](https://practicum.yandex.ru/web).
