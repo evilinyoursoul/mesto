@@ -5,6 +5,7 @@
   border: none;
   background: no-repeat;
   background-image: url(../../../images/like.svg);
+  cursor: pointer;
 }
 
 .article__like:hover {
