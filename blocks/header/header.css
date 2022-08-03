@@ -1,24 +1,19 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  margin: 45px auto 0;
   width: calc(100% - 2 * 200px);
+  border-bottom: 1px solid rgb(84 84 84 / 0.7);
+  margin: 0 auto;
+  max-width: 880px;
+  padding-bottom: 40px;
+  padding-top: 45px;
 }
 
-.header::after {
-  /* width: 1158px; */
-  height: 1px;
-  content: "";
-  background-image: url(../../images/line.svg);
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
 
 @media screen and (max-width: 768px) {
   .header {
     width: 100%;
-    margin: 28px auto 0;
-    gap: 31px;
+    padding-bottom: 32px;
+    padding-top: 28px;
   }
 }
