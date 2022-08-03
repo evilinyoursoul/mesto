@@ -7,6 +7,7 @@
   background-position: center;
   border: 2px solid var(--basic-white);
   border-radius: 2px;
+  background-size: 22px;
 }
 
 
@@ -15,5 +16,6 @@
     max-width: 282px;
     width: 100%;
     margin-top: 36px;
+    background-size: 16px;
   }
 }
