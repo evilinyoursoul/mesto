@@ -6,3 +6,7 @@
   background: no-repeat;
   background-image: url(../../../images/like.svg);
 }
+
+.article__like:hover {
+  opacity: 0.5;
+}

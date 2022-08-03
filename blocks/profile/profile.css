@@ -6,6 +6,12 @@
   width: calc(100% - 2 * 200px);
 }
 
+@media screen and (max-width: 1000px) {
+  .profile {
+    width: 80%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .profile {
     flex-direction: column;

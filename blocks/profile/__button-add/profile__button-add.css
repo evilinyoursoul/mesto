@@ -8,8 +8,12 @@
   border: 2px solid var(--basic-white);
   border-radius: 2px;
   background-size: 22px;
+  cursor: pointer;
 }
 
+.profile__button-add:hover {
+  opacity: 0.6;
+}
 
 @media screen and (max-width: 768px) {
   .profile__button-add {
