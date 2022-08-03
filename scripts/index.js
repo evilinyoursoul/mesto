@@ -6,7 +6,7 @@ const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector(".profile__occupation");
 const inputName = document.querySelector(".popup__input_type_name");
 const inputOccupation = document.querySelector(".popup__input_type_occupation");
-const profileForm = document.querySelector(".popup__form-profile");
+const profileForm = document.querySelector(".popup__form");
 
 profileEditBtn.addEventListener("click", popupOpen);
 popupCloseBtn.addEventListener("click", popupClose);
