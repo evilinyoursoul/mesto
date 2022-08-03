@@ -10,7 +10,6 @@
   .profile {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 42px auto 0;
     width: calc(100% - 2 * 19px);
   }
