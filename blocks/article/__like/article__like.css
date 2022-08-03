@@ -1,6 +1,6 @@
 .article__like {
   display: inline-block;
-  width: 22px;
+  min-width: 22px;
   height: 19px;
   border: none;
   background: no-repeat;
