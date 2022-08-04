@@ -1,7 +1,7 @@
 .profile__occupation {
   grid-area: occupation;
   margin: 0;
-
+  max-width: 336px;
   color: var(--basic-white);
   font-size: 18px;
   line-height: 1.22;
@@ -15,5 +15,6 @@
     font-size: 14px;
     line-height: 17px;
     padding-top: 14px;
+    max-width: calc(282px - 2 * 19px);
   }
 }
