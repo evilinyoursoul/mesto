@@ -1,4 +1,5 @@
-const popup = document.querySelector(".popup");
+const popupProfile = document.querySelector(".popup-profile");
+const popupAricle = document.querySelector(".popup-article");
 const profileEditBtn = document.querySelector(".profile__button-edit");
 const popupCloseBtn = document.querySelector(".popup__button-close");
 const popupSubmit = document.querySelector(".popup__submit");
@@ -9,6 +10,7 @@ const inputOccupation = document.querySelector(".popup__input_type_occupation");
 const profileForm = document.querySelector(".popup__form");
 const articleTemplate = document.querySelector('#article-template').content;
 const articleGrid = document.querySelector(".article-grid__list");
+const addArticleBtn = document.querySelector(".profile__button-add");
 
 const initialArticles = [
   {
@@ -37,18 +39,27 @@ const initialArticles = [
   }
 ];
 
-profileEditBtn.addEventListener("click", popupOpen);
+profileEditBtn.addEventListener("click", onClickProfile);
+addArticleBtn.addEventListener("click", onCLickAddArticle);
 popupCloseBtn.addEventListener("click", popupClose);
 profileForm.addEventListener("submit", submitProfile);
 
-function popupOpen() {
+function popupOpen(popup) {
   popup.classList.add("popup_opened");
-  inputName.value = profileName.textContent;
-  inputOccupation.value = profileOccupation.textContent;
 }
 
 function popupClose() {
   popup.classList.remove("popup_opened");
+}
+
+function onClickProfile() {
+  popupOpen(popupProfile);
+  inputName.value = profileName.textContent;
+  inputOccupation.value = profileOccupation.textContent;
+}
+
+function onCLickAddArticle() {
+  popupOpen(popupAricle);
 }
 
 function submitProfile(event) {
