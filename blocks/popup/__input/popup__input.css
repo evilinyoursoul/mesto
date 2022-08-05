@@ -17,3 +17,7 @@
     padding-bottom: 9px;
   }
 }
+
+.popup__input::placeholder {
+  color: var(--placeholder);
+}
