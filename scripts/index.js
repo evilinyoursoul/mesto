@@ -8,7 +8,10 @@ const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector(".profile__occupation");
 const inputName = document.querySelector(".popup__input_type_name");
 const inputOccupation = document.querySelector(".popup__input_type_occupation");
-const profileForm = document.querySelector(".popup__form");
+const inputPlace = document.querySelector(".popup__input_type_place");
+const inputImg = document.querySelector(".popup__input_type_img");
+const profileForm = document.querySelector(".popup__form-profile");
+const articleForm = document.querySelector(".popup__form-article");
 const articleTemplate = document.querySelector('#article-template').content;
 const articleGrid = document.querySelector(".article-grid__list");
 const addArticleBtn = document.querySelector(".profile__button-add");
@@ -44,6 +47,8 @@ addArticleBtn.addEventListener("click", onCLickAddArticle);
 popupCloseBtnProfile.addEventListener('click', () => popupClose(popupProfile))
 popupCloseBtnArticle.addEventListener("click", () => popupClose(popupArticle));
 profileForm.addEventListener("submit", submitProfile);
+articleForm.addEventListener("submit", submitArticle);
+
 
 function popupOpen(popup) {
   popup.classList.add("popup_opened");
@@ -63,6 +68,13 @@ function onCLickAddArticle() {
   popupOpen(popupArticle);
 }
 
+function submitArticle(event) {
+  event.preventDefault();
+  addArticle(inputImg.value, inputPlace.value);
+  console.log('article');
+  popupClose(popupArticle);
+}
+
 function submitProfile(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
@@ -80,7 +92,7 @@ function createArticle(imgSrc, title) {
 
 function addArticle(imgSrc, title) {
   const article = createArticle(imgSrc, title);
-  articleGrid.append(article);
+  articleGrid.prepend(article);
 }
 
 function addInitialArticles() {
