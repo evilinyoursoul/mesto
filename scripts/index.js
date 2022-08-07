@@ -1,7 +1,8 @@
 const popupProfile = document.querySelector(".popup-profile");
-const popupAricle = document.querySelector(".popup-article");
+const popupArticle = document.querySelector(".popup-article");
 const profileEditBtn = document.querySelector(".profile__button-edit");
-const popupCloseBtn = document.querySelector(".popup__button-close");
+const popupCloseBtnProfile = document.querySelector(".popup__button-close-profile");
+const popupCloseBtnArticle = document.querySelector(".popup__button-close-article");
 const popupSubmit = document.querySelector(".popup__submit");
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector(".profile__occupation");
@@ -38,17 +39,17 @@ const initialArticles = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
 profileEditBtn.addEventListener("click", onClickProfile);
 addArticleBtn.addEventListener("click", onCLickAddArticle);
-popupCloseBtn.addEventListener("click", popupClose);
+popupCloseBtnProfile.addEventListener('click', () => popupClose(popupProfile))
+popupCloseBtnArticle.addEventListener("click", () => popupClose(popupArticle));
 profileForm.addEventListener("submit", submitProfile);
 
 function popupOpen(popup) {
   popup.classList.add("popup_opened");
 }
 
-function popupClose() {
+function popupClose(popup) {
   popup.classList.remove("popup_opened");
 }
 
@@ -59,14 +60,14 @@ function onClickProfile() {
 }
 
 function onCLickAddArticle() {
-  popupOpen(popupAricle);
+  popupOpen(popupArticle);
 }
 
 function submitProfile(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileOccupation.textContent = inputOccupation.value;
-  popupClose();
+  popupClose(popupProfile);
 }
 
 function createArticle(imgSrc, title) {
