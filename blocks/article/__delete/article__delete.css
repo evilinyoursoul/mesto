@@ -1,0 +1,16 @@
+.article__delete {
+  display: inline-block;
+  min-width: 18px;
+  height: 19px;
+  border: none;
+  background: no-repeat;
+  background-image: url(../../../images/trash.svg);
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.article__delete:hover {
+  opacity: 0.5;
+}

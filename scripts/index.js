@@ -89,16 +89,20 @@ function createArticle(imgSrc, title) {
   articleElement.querySelector('.article__title').textContent = title;
   // console.log(articleElement);
   const like = articleElement.querySelector('.article__like');
+  const del = articleElement.querySelector('.article__delete');
   const articleImg = articleElement.querySelector('.article__img');
   const articleTitle = articleElement.querySelector('.article__title');
 
   like.addEventListener("click", likeArticle);
 
+  del.addEventListener("click", function () {
+    articleElement.remove();
+  });
+
   articleImg.addEventListener("click", function () {
     console.log(articleImg);
     popupArticleImg.src = articleImg.src;
     popupCaption.textContent = articleTitle.textContent;
-
     popupOpen(popupImg);
   });
 
