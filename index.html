@@ -28,13 +28,7 @@
       </section>
       <section class="article-grid">
         <ul class="article-grid__list">
-          <li class="article">
-            <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Вид на церковь в горах" class="article__img">
-            <div class="article__description">
-              <h3 class="article__title">Карачаевск</h3>
-              <button class="article__like" type="button"></button>
-            </div>
-          </li>
+
         </ul>
       </section>
     </main>
@@ -63,6 +57,13 @@
           <input type="text" id="img-input" class="popup__input popup__input_type_img" minlength="2" maxlength="200" required="" name="place-img" placeholder="Ссылка на картинку">
           <button type="submit" class="popup__submit" value="Сохранить">Создать</button>
       </form>
+      </div>
+    </section>
+    <section class="popup popup-img">
+      <div class="popup-img__container">
+        <img class="popup__image" src="" alt="Увеличенное изображение из статьи">
+        <h2 class="popup__caption"></h2>
+        <button class="popup__button-close popup__button-close-img" type="button"></button>
       </div>
     </section>
     <template id="article-template">

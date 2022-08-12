@@ -1,8 +1,10 @@
 const popupProfile = document.querySelector(".popup-profile");
 const popupArticle = document.querySelector(".popup-article");
+const popupImg = document.querySelector(".popup-img");
 const profileEditBtn = document.querySelector(".profile__button-edit");
 const popupCloseBtnProfile = document.querySelector(".popup__button-close-profile");
 const popupCloseBtnArticle = document.querySelector(".popup__button-close-article");
+const popupCloseBtnImg = document.querySelector(".popup__button-close-img");
 const popupSubmit = document.querySelector(".popup__submit");
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector(".profile__occupation");
@@ -15,6 +17,10 @@ const articleForm = document.querySelector(".popup__form-article");
 const articleTemplate = document.querySelector('#article-template').content;
 const articleGrid = document.querySelector(".article-grid__list");
 const addArticleBtn = document.querySelector(".profile__button-add");
+
+const popupArticleImg = document.querySelector(".popup__image");
+const popupCaption = document.querySelector(".popup__caption");
+
 
 const initialArticles = [
   {
@@ -42,12 +48,7 @@ const initialArticles = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-profileEditBtn.addEventListener("click", onClickProfile);
-addArticleBtn.addEventListener("click", onCLickAddArticle);
-popupCloseBtnProfile.addEventListener('click', () => popupClose(popupProfile))
-popupCloseBtnArticle.addEventListener("click", () => popupClose(popupArticle));
-profileForm.addEventListener("submit", submitProfile);
-articleForm.addEventListener("submit", submitArticle);
+
 
 
 function popupOpen(popup) {
@@ -87,6 +88,20 @@ function createArticle(imgSrc, title) {
   articleElement.querySelector('.article__img').src = imgSrc;
   articleElement.querySelector('.article__title').textContent = title;
   // console.log(articleElement);
+  const like = articleElement.querySelector('.article__like');
+  const articleImg = articleElement.querySelector('.article__img');
+  const articleTitle = articleElement.querySelector('.article__title');
+
+  like.addEventListener("click", likeArticle);
+
+  articleImg.addEventListener("click", function () {
+    console.log(articleImg);
+    popupArticleImg.src = articleImg.src;
+    popupCaption.textContent = articleTitle.textContent;
+
+    popupOpen(popupImg);
+  });
+
   return articleElement;
 }
 
@@ -101,7 +116,18 @@ function addInitialArticles() {
   };
 }
 
-
-
+function likeArticle(event) {
+  event.target.classList.toggle("article__like_active");
+}
 
 addInitialArticles();
+
+profileEditBtn.addEventListener("click", onClickProfile);
+addArticleBtn.addEventListener("click", onCLickAddArticle);
+popupCloseBtnProfile.addEventListener('click', () => popupClose(popupProfile))
+popupCloseBtnArticle.addEventListener("click", () => popupClose(popupArticle));
+popupCloseBtnImg.addEventListener("click", () => popupClose(popupImg));
+profileForm.addEventListener("submit", submitProfile);
+articleForm.addEventListener("submit", submitArticle);
+
+
