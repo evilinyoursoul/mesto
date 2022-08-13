@@ -69,7 +69,11 @@ function handleAddArticleClick() {
 
 function submitArticle(event) {
   event.preventDefault();
-  addArticle(inputImg.value, inputPlace.value);
+  const articleData = {
+    name: inputPlace.value,
+    link: inputImg.value
+  };
+  addArticle(articleData);
   articleForm.reset();
   closePopup(popupArticle);
 }
@@ -81,16 +85,16 @@ function submitProfile(event) {
   closePopup(popupProfile);
 }
 
-function createArticle(imgSrc, title) {
+function createArticle(articleData) {
   const articleElement = articleTemplate.querySelector('.article').cloneNode(true);
   const btnLikeArticle = articleElement.querySelector('.article__like');
   const btnDelArticle = articleElement.querySelector('.article__delete');
   const articleImg = articleElement.querySelector('.article__img');
   const articleTitle = articleElement.querySelector('.article__title');
 
-  articleImg.src = imgSrc;
-  articleImg.alt = title;
-  articleTitle.textContent = title;
+  articleImg.src = articleData.link;
+  articleImg.alt = articleData.name;
+  articleTitle.textContent = articleData.name;
 
   btnLikeArticle.addEventListener("click", likeArticle);
 
@@ -99,9 +103,9 @@ function createArticle(imgSrc, title) {
   });
 
   articleImg.addEventListener("click", function () {
-    popupArticleImg.src = imgSrc;
-    popupArticleImg.alt = title;
-    popupCaption.textContent = title;
+    popupArticleImg.src = articleData.link;
+    popupArticleImg.alt = articleData.name;
+    popupCaption.textContent = articleData.name;
 
     openPopup(popupImg);
   });
@@ -109,8 +113,8 @@ function createArticle(imgSrc, title) {
   return articleElement;
 }
 
-function addArticle(imgSrc, title) {
-  const article = createArticle(imgSrc, title);
+function addArticle(articleData) {
+  const article = createArticle(articleData);
   articleGrid.prepend(article);
 }
 
@@ -118,7 +122,7 @@ function likeArticle(event) {
   event.target.classList.toggle("article__like_active");
 }
 
-initialArticles.forEach((element) => addArticle(element.link, element.name));
+initialArticles.forEach((element) => addArticle(element));
 
 
 profileEditBtn.addEventListener("click", handleProfileClick);
