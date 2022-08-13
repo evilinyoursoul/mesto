@@ -57,6 +57,14 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+function closePopupByEsc(event) {
+  if (event.key == 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    console.log(openedPopup);
+    closePopup(openedPopup);
+  }
+}
+
 function handleProfileClick() {
   openPopup(popupProfile);
   inputName.value = profileName.textContent;
@@ -132,5 +140,7 @@ popupCloseBtnArticle.addEventListener("click", () => closePopup(popupArticle));
 popupCloseBtnImg.addEventListener("click", () => closePopup(popupImg));
 profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
+
+document.addEventListener('keyup', closePopupByEsc);
 
 
