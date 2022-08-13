@@ -83,14 +83,14 @@ function submitProfile(event) {
 
 function createArticle(imgSrc, title) {
   const articleElement = articleTemplate.querySelector('.article').cloneNode(true);
-  articleElement.querySelector('.article__img').src = imgSrc;
-  articleElement.querySelector('.article__img').alt = title;
-  articleElement.querySelector('.article__title').textContent = title;
-
   const btnLikeArticle = articleElement.querySelector('.article__like');
   const btnDelArticle = articleElement.querySelector('.article__delete');
   const articleImg = articleElement.querySelector('.article__img');
   const articleTitle = articleElement.querySelector('.article__title');
+
+  articleImg.src = imgSrc;
+  articleImg.alt = title;
+  articleTitle.textContent = title;
 
   btnLikeArticle.addEventListener("click", likeArticle);
 
@@ -99,9 +99,10 @@ function createArticle(imgSrc, title) {
   });
 
   articleImg.addEventListener("click", function () {
-    popupArticleImg.src = articleImg.src;
-    popupArticleImg.alt = articleImg.alt;
-    popupCaption.textContent = articleTitle.textContent;
+    popupArticleImg.src = imgSrc;
+    popupArticleImg.alt = title;
+    popupCaption.textContent = title;
+
     openPopup(popupImg);
   });
 
@@ -118,6 +119,7 @@ function likeArticle(event) {
 }
 
 initialArticles.forEach((element) => addArticle(element.link, element.name));
+
 
 profileEditBtn.addEventListener("click", handleProfileClick);
 articleAddBtn.addEventListener("click", handleAddArticleClick);
