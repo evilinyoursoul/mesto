@@ -16,7 +16,7 @@ const profileForm = document.querySelector(".popup__form-profile");
 const articleForm = document.querySelector(".popup__form-article");
 const articleTemplate = document.querySelector('#article-template').content;
 const articleGrid = document.querySelector(".article-grid__list");
-const addArticleBtn = document.querySelector(".profile__button-add");
+const articleAddBtn = document.querySelector(".profile__button-add");
 
 const popupArticleImg = document.querySelector(".popup__image");
 const popupCaption = document.querySelector(".popup__caption");
@@ -49,61 +49,60 @@ const initialArticles = [
   }
 ];
 
-
-
-function popupOpen(popup) {
+function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
 
-function popupClose(popup) {
+function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-function onClickProfile() {
-  popupOpen(popupProfile);
+function handleProfileClick() {
+  openPopup(popupProfile);
   inputName.value = profileName.textContent;
   inputOccupation.value = profileOccupation.textContent;
 }
 
-function onCLickAddArticle() {
-  popupOpen(popupArticle);
+function handleAddArticleClick() {
+  openPopup(popupArticle);
 }
 
 function submitArticle(event) {
   event.preventDefault();
   addArticle(inputImg.value, inputPlace.value);
-  console.log('article');
-  popupClose(popupArticle);
+  articleForm.reset();
+  closePopup(popupArticle);
 }
 
 function submitProfile(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileOccupation.textContent = inputOccupation.value;
-  popupClose(popupProfile);
+  closePopup(popupProfile);
 }
 
 function createArticle(imgSrc, title) {
   const articleElement = articleTemplate.querySelector('.article').cloneNode(true);
   articleElement.querySelector('.article__img').src = imgSrc;
+  articleElement.querySelector('.article__img').alt = title;
   articleElement.querySelector('.article__title').textContent = title;
-  // console.log(articleElement);
-  const like = articleElement.querySelector('.article__like');
-  const del = articleElement.querySelector('.article__delete');
+
+  const btnLikeArticle = articleElement.querySelector('.article__like');
+  const btnDelArticle = articleElement.querySelector('.article__delete');
   const articleImg = articleElement.querySelector('.article__img');
   const articleTitle = articleElement.querySelector('.article__title');
 
-  like.addEventListener("click", likeArticle);
+  btnLikeArticle.addEventListener("click", likeArticle);
 
-  del.addEventListener("click", function () {
+  btnDelArticle.addEventListener("click", function () {
     articleElement.remove();
   });
 
   articleImg.addEventListener("click", function () {
-    console.log(articleImg);
     popupArticleImg.src = articleImg.src;
+    popupArticleImg.alt = articleImg.alt;
     popupCaption.textContent = articleTitle.textContent;
-    popupOpen(popupImg);
+    openPopup(popupImg);
   });
 
   return articleElement;
@@ -114,23 +113,17 @@ function addArticle(imgSrc, title) {
   articleGrid.prepend(article);
 }
 
-function addInitialArticles() {
-  for (let i = 0; i < initialArticles.length; i++) {
-    addArticle(initialArticles[i].link, initialArticles[i].name);
-  };
-}
-
 function likeArticle(event) {
   event.target.classList.toggle("article__like_active");
 }
 
-addInitialArticles();
+initialArticles.forEach((element) => addArticle(element.link, element.name));
 
-profileEditBtn.addEventListener("click", onClickProfile);
-addArticleBtn.addEventListener("click", onCLickAddArticle);
-popupCloseBtnProfile.addEventListener('click', () => popupClose(popupProfile))
-popupCloseBtnArticle.addEventListener("click", () => popupClose(popupArticle));
-popupCloseBtnImg.addEventListener("click", () => popupClose(popupImg));
+profileEditBtn.addEventListener("click", handleProfileClick);
+articleAddBtn.addEventListener("click", handleAddArticleClick);
+popupCloseBtnProfile.addEventListener('click', () => closePopup(popupProfile))
+popupCloseBtnArticle.addEventListener("click", () => closePopup(popupArticle));
+popupCloseBtnImg.addEventListener("click", () => closePopup(popupImg));
 profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
 
