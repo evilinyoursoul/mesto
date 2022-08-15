@@ -48,18 +48,6 @@ const initialArticles = [
   }
 ];
 
-const formProfile = document.querySelector(".popup__form-profile");
-const formInput = document.querySelector(".popup__input");
-
-const formsConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input_error'
-};
-
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
