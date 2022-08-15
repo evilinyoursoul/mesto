@@ -1,3 +1,4 @@
+const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup-profile");
 const popupArticle = document.querySelector(".popup-article");
 const popupImg = document.querySelector(".popup-img");
@@ -63,6 +64,20 @@ function closePopupByEsc(event) {
     closePopup(openedPopup);
   }
 }
+
+function closeOnClick(event) {
+  if (event.target !== event.currentTarget) {
+    console.log(event.target);
+    console.log(event.currentTarget);
+    return;
+  }
+  else {
+    console.log(event.target);
+    console.log(event.currentTarget);
+    closePopup(event.currentTarget)
+  }
+}
+
 
 function handleProfileClick() {
   openPopup(popupProfile);
@@ -141,5 +156,8 @@ profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
 
 document.addEventListener('keyup', closePopupByEsc);
+popupImg.addEventListener('click', closeOnClick);
+popupArticle.addEventListener('click', closeOnClick);
+popupProfile.addEventListener('click', closeOnClick);
 
 enableValidation(formsConfig);
