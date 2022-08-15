@@ -41,9 +41,11 @@
       <div class="popup__container">
         <button class="popup__button-close popup__button-close-profile" type="button"></button>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <form class="popup__form popup__form-profile" name="user">
+        <form class="popup__form popup__form-profile" name="user" novalidate>
           <input type="text" id="name-input" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required name="profile-name">
+          <span class="popup__input-error name-input-error"></span>
           <input type="text" id="occupation-input" class="popup__input popup__input_type_occupation" minlength="2" maxlength="200" required name="occupation-name">
+          <span class="popup__input-error occupation-input-error"></span>
           <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
       </form>
       </div>
@@ -52,9 +54,11 @@
       <div class="popup__container">
         <button class="popup__button-close popup__button-close-article" type="button"></button>
         <h2 class="popup__header">Новое место</h2>
-        <form class="popup__form popup__form-article" name="place">
+        <form class="popup__form popup__form-article" name="place" novalidate>
           <input type="text" id="place-input" class="popup__input popup__input_type_place" minlength="2" maxlength="30" name="place-name" placeholder="Название" required>
+          <span class="popup__input-error place-input-error"></span>
           <input type="url" id="img-input" class="popup__input popup__input_type_img" name="place-img" placeholder="Ссылка на картинку" required>
+          <span class="popup__input-error img-input-error"></span>
           <button type="submit" class="popup__submit" value="Сохранить">Создать</button>
       </form>
       </div>
@@ -76,7 +80,8 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
+
 </body>
 </html>

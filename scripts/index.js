@@ -21,7 +21,6 @@ const articleAddBtn = document.querySelector(".profile__button-add");
 const popupArticleImg = document.querySelector(".popup__image");
 const popupCaption = document.querySelector(".popup__caption");
 
-
 const initialArticles = [
   {
     name: 'Архыз',
@@ -48,6 +47,18 @@ const initialArticles = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const formProfile = document.querySelector(".popup__form-profile");
+const formInput = document.querySelector(".popup__input");
+
+const formsConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input_error'
+};
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -143,4 +154,4 @@ articleForm.addEventListener("submit", submitArticle);
 
 document.addEventListener('keyup', closePopupByEsc);
 
-
+enableValidation(formsConfig);
