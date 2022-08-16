@@ -1,4 +1,3 @@
-const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup-profile");
 const popupArticle = document.querySelector(".popup-article");
 const popupImg = document.querySelector(".popup-img");
@@ -51,29 +50,26 @@ const initialArticles = [
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keyup', closePopupByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keyup', closePopupByEsc);
 }
 
 function closePopupByEsc(event) {
   if (event.key == 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
-    console.log(openedPopup);
     closePopup(openedPopup);
   }
 }
 
 function closeOnClick(event) {
   if (event.target !== event.currentTarget) {
-    console.log(event.target);
-    console.log(event.currentTarget);
     return;
   }
   else {
-    console.log(event.target);
-    console.log(event.currentTarget);
     closePopup(event.currentTarget)
   }
 }
@@ -89,14 +85,26 @@ function handleAddArticleClick() {
   openPopup(popupArticle);
 }
 
+// function deactivateButton(event, formsConfig) {
+//   const buttonElement = formElement.querySelector(formsConfig.submitButtonSelector);
+//   buttonElement.classList.add(formsConfig.inactiveButtonClass);
+//   buttonElement.setAttribute('disabled', 'disabled');
+// }
+
 function submitArticle(event) {
   event.preventDefault();
   const articleData = {
     name: inputPlace.value,
     link: inputImg.value
   };
+  const btnSubmitArticle = event.target.querySelector('.popup__submit');
+
   addArticle(articleData);
   articleForm.reset();
+
+  btnSubmitArticle.setAttribute('disabled', 'disabled');
+  btnSubmitArticle.classList.add(formsConfig.inactiveButtonClass);
+
   closePopup(popupArticle);
 }
 
@@ -155,7 +163,6 @@ popupCloseBtnImg.addEventListener("click", () => closePopup(popupImg));
 profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
 
-document.addEventListener('keyup', closePopupByEsc);
 popupImg.addEventListener('click', closeOnClick);
 popupArticle.addEventListener('click', closeOnClick);
 popupProfile.addEventListener('click', closeOnClick);
