@@ -1,10 +1,9 @@
+
+const popups = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector(".popup-profile");
 const popupArticle = document.querySelector(".popup-article");
 const popupImg = document.querySelector(".popup-img");
 const profileEditBtn = document.querySelector(".profile__button-edit");
-const popupCloseBtnProfile = document.querySelector(".popup__button-close-profile");
-const popupCloseBtnArticle = document.querySelector(".popup__button-close-article");
-const popupCloseBtnImg = document.querySelector(".popup__button-close-img");
 const popupSubmit = document.querySelector(".popup__submit");
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector(".profile__occupation");
@@ -85,12 +84,6 @@ function handleAddArticleClick() {
   openPopup(popupArticle);
 }
 
-// function deactivateButton(event, formsConfig) {
-//   const buttonElement = formElement.querySelector(formsConfig.submitButtonSelector);
-//   buttonElement.classList.add(formsConfig.inactiveButtonClass);
-//   buttonElement.setAttribute('disabled', 'disabled');
-// }
-
 function submitArticle(event) {
   event.preventDefault();
   const articleData = {
@@ -154,12 +147,16 @@ function likeArticle(event) {
 
 initialArticles.forEach((element) => addArticle(element));
 
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup);
+    }
+  })
+})
 
 profileEditBtn.addEventListener("click", handleProfileClick);
 articleAddBtn.addEventListener("click", handleAddArticleClick);
-popupCloseBtnProfile.addEventListener('click', () => closePopup(popupProfile))
-popupCloseBtnArticle.addEventListener("click", () => closePopup(popupArticle));
-popupCloseBtnImg.addEventListener("click", () => closePopup(popupImg));
 profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
 
