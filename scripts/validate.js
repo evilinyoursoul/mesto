@@ -7,14 +7,14 @@ const formsConfig = {
   errorClass: 'popup__input_error'
 };
 
-const showInputError = (formElement, inputElement, errorMessage, formsConfig) => {
+const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(formsConfig.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(formsConfig.errorClass);
 };
 
-const hideInputError = (formElement, inputElement, formsConfig) => {
+const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(formsConfig.inputErrorClass);
   errorElement.classList.remove(formsConfig.errorClass);
@@ -23,9 +23,9 @@ const hideInputError = (formElement, inputElement, formsConfig) => {
 
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, formsConfig);
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement, formsConfig);
+    hideInputError(formElement, inputElement);
   }
 };
 
