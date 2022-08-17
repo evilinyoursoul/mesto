@@ -160,8 +160,4 @@ articleAddBtn.addEventListener("click", handleAddArticleClick);
 profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
 
-popupImg.addEventListener('click', closeOnClick);
-popupArticle.addEventListener('click', closeOnClick);
-popupProfile.addEventListener('click', closeOnClick);
-
 enableValidation(formsConfig);
