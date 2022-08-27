@@ -1,10 +1,6 @@
-// import { initialArticles } from '../scripts/index.js'
 import { openPopup } from "./index.js";
 
-
-
-
-class Card {
+export default class Card {
   constructor(data, templateSelector) {
     this._link = data.link;
     this._name = data.name;
@@ -67,41 +63,5 @@ class Card {
     popupArticleImg.src = this._link;
     popupArticleImg.alt = this._name;
     popupCaption.textContent = this._name;
-
   }
 }
-
-
-const initialArticles1 = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-// переберём весь исходный массив
-initialArticles1.forEach((item) => {
-  const card = new Card(item); // передаём объект аргументом
-  const cardElement = card.generateCard();
-  document.querySelector(".article-grid__list").append(cardElement);
-});
