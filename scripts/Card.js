@@ -1,15 +1,14 @@
-import { openPopup } from "./index.js";
-
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleArticleClick) {
     this._link = data.link;
     this._name = data.name;
     this._templateSelector = templateSelector;
+    this._handleArticleClick = handleArticleClick;
   }
 
   _getTemplate() {
     const cardElement = document
-      .querySelector('#article-template')
+      .querySelector(this._templateSelector)
       .content
       .querySelector('.article')
       .cloneNode(true);
@@ -25,8 +24,8 @@ export default class Card {
 
     this._setEventListeners();
 
-    this._element.querySelector('.article__img').src = this._link;
-    this._element.querySelector('.article__img').alt = this._name;
+    this._articleImg.src = this._link;
+    this._articleImg.alt = this._name;
     this._element.querySelector('.article__title').textContent = this._name;
 
     return this._element;
@@ -42,7 +41,7 @@ export default class Card {
     })
 
     this._articleImg.addEventListener('click', () => {
-      this._handleImgClick();
+      this._handleArticleClick(this._name, this._link);
     })
   }
 
@@ -52,16 +51,5 @@ export default class Card {
 
   _handleDelClick() {
     this._element.remove();
-  }
-
-  _handleImgClick() {
-    const popupImg = document.querySelector(".popup-img");
-    const popupArticleImg = document.querySelector(".popup__image");
-    const popupCaption = document.querySelector(".popup__caption");
-    openPopup(popupImg);
-
-    popupArticleImg.src = this._link;
-    popupArticleImg.alt = this._name;
-    popupCaption.textContent = this._name;
   }
 }

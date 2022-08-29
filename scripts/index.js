@@ -15,6 +15,11 @@ const profileForm = document.querySelector(".popup__form-profile");
 const articleForm = document.querySelector(".popup__form-article");
 const articleGrid = document.querySelector(".article-grid__list");
 const articleAddBtn = document.querySelector(".profile__button-add");
+const articleTemplate = '#article-template';
+
+const popupImg = document.querySelector(".popup-img");
+const popupArticleImg = document.querySelector(".popup__image");
+const popupCaption = document.querySelector(".popup__caption");
 
 const initialArticles = [
   {
@@ -52,7 +57,10 @@ const formsConfig = {
   errorClass: 'popup__input_error'
 };
 
-export function openPopup(popup) {
+const validatorProfileForm = new FormValidator(formsConfig, profileForm);
+const articleProfileForm = new FormValidator(formsConfig, articleForm);
+
+function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener('keyup', closePopupByEsc);
 }
@@ -70,12 +78,21 @@ function closePopupByEsc(event) {
 }
 
 function handleProfileClick() {
+  validatorProfileForm.resetValidation();
   openPopup(popupProfile);
   inputName.value = profileName.textContent;
   inputOccupation.value = profileOccupation.textContent;
 }
 
+function handleArticleClick(name, link) {
+  popupArticleImg.src = link;
+  popupArticleImg.alt = name;
+  popupCaption.textContent = name;
+  openPopup(popupImg);
+}
+
 function handleAddArticleClick() {
+  articleProfileForm.resetValidation();
   openPopup(popupArticle);
 }
 
@@ -85,13 +102,9 @@ function submitArticle(event) {
     name: inputPlace.value,
     link: inputImg.value
   };
-  const btnSubmitArticle = event.target.querySelector('.popup__submit');
 
-  addArticle(articleData);
+  articleGrid.prepend(createArticle(articleData));
   articleForm.reset();
-
-  btnSubmitArticle.setAttribute('disabled', 'disabled');
-  btnSubmitArticle.classList.add(formsConfig.inactiveButtonClass);
 
   closePopup(popupArticle);
 }
@@ -103,17 +116,14 @@ function submitProfile(event) {
   closePopup(popupProfile);
 }
 
-function addArticle(articleData) {
-  const article = new Card(articleData);
+function createArticle(articleData) {
+  const article = new Card(articleData, articleTemplate, handleArticleClick);
   const articleElement = article.generateCard();
-
-  articleGrid.prepend(articleElement);
+  return articleElement;
 }
 
 initialArticles.forEach((item) => {
-  const article = new Card(item);
-  const articleElement = article.generateCard();
-  articleGrid.prepend(articleElement);
+  articleGrid.prepend(createArticle(item));
 });
 
 popups.forEach((popup) => {
@@ -129,8 +139,6 @@ articleAddBtn.addEventListener("click", handleAddArticleClick);
 profileForm.addEventListener("submit", submitProfile);
 articleForm.addEventListener("submit", submitArticle);
 
-const validatorProfileForm = new FormValidator(formsConfig, profileForm);
-const articleProfileForm = new FormValidator(formsConfig, articleForm);
-
 validatorProfileForm.enableValidation();
 articleProfileForm.enableValidation();
+
