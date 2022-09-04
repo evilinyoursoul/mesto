@@ -1,5 +1,8 @@
+'use strict';
+
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
+import Section from './Section.js';
 
 const popups = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector(".popup-profile");
@@ -122,9 +125,9 @@ function createArticle(articleData) {
   return articleElement;
 }
 
-initialArticles.forEach((item) => {
-  articleGrid.prepend(createArticle(item));
-});
+// initialArticles.forEach((item) => {
+//   articleGrid.prepend(createArticle(item));
+// });
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
@@ -142,3 +145,14 @@ articleForm.addEventListener("submit", submitArticle);
 validatorProfileForm.enableValidation();
 articleProfileForm.enableValidation();
 
+const articleList = new Section(
+  {
+    data: initialArticles,
+    renderer: (initialArticles) => {
+      const article = createArticle(initialArticles);
+      articleList.addItem(article);
+    }
+  }, articleGrid
+);
+
+articleList.renderItems();
